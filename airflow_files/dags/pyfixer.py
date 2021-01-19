@@ -10,12 +10,7 @@ PACKAGE_PARENT = '..'
 SCRIPT_DIR = os.path.dirname(os.path.realpath(os.path.join(os.getcwd(), os.path.expanduser(__file__))))
 sys.path.append(os.path.normpath(os.path.join(SCRIPT_DIR, PACKAGE_PARENT)))
 
-
-
 from python_callables.main import main,execute_ddl
-
-
-
 
 args = {
     'owner': 'airflow',
@@ -25,7 +20,7 @@ args = {
 dag = DAG(
     dag_id='pyfixer_dag',
     default_args=args,
-    schedule_interval='0 0 * * *',
+    schedule_interval='*/5 0 * * *',
     dagrun_timeout=timedelta(minutes=60),
     template_searchpath='/usr/local/airflow/sql',
     tags=['example']

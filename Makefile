@@ -62,6 +62,8 @@ _start_cluster:
 	docker-compose up initdb; \
 	sleep 20; \
 	docker-compose up webserver scheduler; \
+	sleep 20; \
+	docker-compose exec webserver airflow connections -a --conn_id postgres_airflow --conn_type postgres --conn_host postgres --conn_login airflow --conn_password airflow --conn_port 5432; \
 	)
 
 

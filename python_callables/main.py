@@ -9,6 +9,19 @@ from helpers.sql.execute_sql_files import connect
 from helpers.fixer.Fixer_data import Fixer_data
 from helpers.sql.execute_sql_files import connect,execute_file
 
+def execute_ddl():
+    
+    cur=connect(
+        host='postgres',
+        database='airflow',
+        user='airflow',
+        password='airflow')
+
+    execute_file(cur,path_to_sql='./sql/ddl/create_schema.sql')
+    execute_file(cur,path_to_sql='./sql/ddl/create_table.sql')
+
+    cur.close()
+
 def main():
 
     res=Fixer_data(
@@ -25,18 +38,5 @@ def main():
         password='airflow')
 
     res.insert_statement(cur)
-
-    cur.close()
-
-def execute_ddl():
-    
-    cur=connect(
-        host='postgres',
-        database='airflow',
-        user='airflow',
-        password='airflow')
-
-    execute_file(cur,path_to_sql='./sql/ddl/create_schema.sql')
-    execute_file(cur,path_to_sql='./sql/ddl/create_table.sql')
 
     cur.close()
