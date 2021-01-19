@@ -29,3 +29,5 @@ Airflow takes care of executing and scheduling a python job that runs every 5 mi
 6. Once the dag runs successfully  you can check the data in the Postgres database. To do so, you can use you database manager and log in using this credentials and the password `airflow`:
 ![Alt text](docs/credentials.png)
 7. The Dag is set to run every 5 minutes inserting only one rate per pair of currencies and date.
+8. When you want to stop the cluster: cd to the root of the repo and run `make _stop_cluster`
+9. If you  want to restart it run: `make _restart_cluster`.
